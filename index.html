@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Henry's Restaurant</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content fade-element">
+      <h1>Henry's Restaurant</h1>
+      <p>Where taste meets elegance</p>
+      <a href="#menu" class="btn">View Menu</a>
+    </div>
+  </header>
+
+  <!-- About Us -->
+  <section id="about" class="fade-element">
+    <h2>About Us</h2>
+    <div class="about-content">
+      <img src="./images/sanjicooking.jpg" alt="Sanji Cooking">
+      <p>Welcome to Henry's Restaurant, where each dish is crafted with love and passion. Our chefs bring artistry and flavor together to create an unforgettable dining experience.</p>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <section id="menu" class="fade-element">
+    <h2>Our Menu</h2>
+    <div class="menu-items">
+      <div class="menu-item" data-popup="salad">
+        <img src="./images/caesarsalad.jpg" alt="Caesar Salad">
+        <h3>Caesar Salad</h3>
+        <p>Crisp romaine with classic Caesar dressing.</p>
+      </div>
+      <div class="menu-item" data-popup="salmon">
+        <img src="./images/salmon.jpg" alt="Grilled Salmon">
+        <h3>Grilled Salmon</h3>
+        <p>Fresh salmon with lemon butter sauce.</p>
+      </div>
+      <div class="menu-item" data-popup="lava">
+        <img src="./images/lava.jpg" alt="Chocolate Lava Cake">
+        <h3>Chocolate Lava Cake</h3>
+        <p>Rich chocolate cake with a molten center.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section id="booking" class="fade-element">
+    <h2>Book a Table</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Email" required />
+      <input type="date" required />
+      <input type="time" required />
+      <button type="submit">Reserve Now</button>
+    </form>
+  </section>
+
+  <!-- Popups -->
+  <div class="popup" id="popup-salad">
+    <div class="popup-content">
+      <span class="close">&times;</span>
+      <img src="./images/caesarsalad.jpg" alt="Caesar Salad">
+      <h3>Caesar Salad</h3>
+      <p>A refreshing start to your meal with crisp romaine, parmesan, and our signature Caesar dressing.</p>
+    </div>
+  </div>
+
+  <div class="popup" id="popup-salmon">
+    <div class="popup-content">
+      <span class="close">&times;</span>
+      <img src="./images/salmon.jpg" alt="Grilled Salmon">
+      <h3>Grilled Salmon</h3>
+      <p>Fresh salmon grilled to perfection with a squeeze of lemon and a side of seasonal vegetables.</p>
+    </div>
+  </div>
+
+  <div class="popup" id="popup-lava">
+    <div class="popup-content">
+      <span class="close">&times;</span>
+      <img src="./images/lava.jpg" alt="Chocolate Lava Cake">
+      <h3>Chocolate Lava Cake</h3>
+      <p>Warm, decadent chocolate cake with a molten chocolate center, served with vanilla ice cream.</p>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Smooth fade in/out on scroll
+    const fadeElements = document.querySelectorAll('.fade-element');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          entry.target.classList.remove('fade-out');
+        } else {
+          entry.target.classList.remove('fade-in');
+          entry.target.classList.add('fade-out');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    fadeElements.forEach(el => observer.observe(el));
+
+    // Popup logic
+    const menuItems = document.querySelectorAll(".menu-item");
+    const closes = document.querySelectorAll(".close");
+
+    menuItems.forEach(item => {
+      item.addEventListener("click", () => {
+        const popupId = `popup-${item.dataset.popup}`;
+        document.getElementById(popupId).classList.add("show");
+      });
+    });
+
+    closes.forEach(close => {
+      close.addEventListener("click", () => {
+        close.closest(".popup").classList.remove("show");
+      });
+    });
+
+    window.addEventListener("click", e => {
+      if (e.target.classList.contains("popup")) {
+        e.target.classList.remove("show");
+      }
+    });
+  </script>
+</body>
+</html>
