@@ -1,15 +1,8 @@
-// Preloader
-window.addEventListener("load", () => {
-  const preloader = document.getElementById("preloader");
-  if (preloader) {
-    preloader.style.display = "none";
-  }
+// Smooth scroll for nav links (if added in future)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href"))
+      .scrollIntoView({ behavior: "smooth" });
+  });
 });
-
-// Fallback: hide preloader after 3s max
-setTimeout(() => {
-  const preloader = document.getElementById("preloader");
-  if (preloader && preloader.style.display !== "none") {
-    preloader.style.display = "none";
-  }
-}, 3000);
