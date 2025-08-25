@@ -8,50 +8,90 @@
 </head>
 <body>
 
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <h2 class="logo">Henry's Restaurant</h2>
+      <ul class="nav-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#reservation">Reserve</a></li>
+      </ul>
+      <button id="translate-btn" class="btn secondary">ES</button>
+    </div>
+  </nav>
+
   <!-- Hero Section -->
   <header class="hero">
-    <h1>Welcome to Henry's Restaurant</h1>
-    <p>Fine dining with a modern twist</p>
-    <a href="#menu" class="btn">Explore Menu</a>
+    <h1 data-en="Welcome to Henry's Restaurant" data-es="Bienvenido a Henry's Restaurante">Welcome to Henry's Restaurant</h1>
+    <p data-en="Fine dining with a modern twist" data-es="Comida gourmet con un toque moderno">Fine dining with a modern twist</p>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn" data-en="Explore Menu" data-es="Ver Menú">Explore Menu</a>
+      <a href="#reservation" class="btn secondary" data-en="Reserve a Table" data-es="Reservar una Mesa">Reserve a Table</a>
+    </div>
   </header>
 
   <!-- Menu Section -->
   <section id="menu" class="menu">
-    <h2>Our Menu</h2>
+    <h2 data-en="Our Menu" data-es="Nuestro Menú">Our Menu</h2>
     <div class="menu-grid">
-
       <div class="menu-item">
-        <img src="grillsalm1.jpg" alt="Grilled Salmon">
-        <h3>Grilled Salmon</h3>
-        <p>Fresh salmon grilled to perfection, served with vegetables.</p>
+        <img src="grillsalm1.jpg" alt="Grilled Salmon" loading="lazy">
+        <h3 data-en="Grilled Salmon" data-es="Salmón a la Parrilla">Grilled Salmon</h3>
+        <p data-en="Fresh salmon grilled to perfection, served with vegetables." data-es="Salmón fresco a la parrilla, servido con vegetales.">Fresh salmon grilled to perfection, served with vegetables.</p>
       </div>
-
       <div class="menu-item">
-        <img src="steakpot.jpg" alt="Steak and Potatoes">
-        <h3>Steak & Potatoes</h3>
-        <p>Juicy steak paired with seasoned roasted potatoes.</p>
+        <img src="steakpot1.jpg" alt="Steak & Potatoes" loading="lazy">
+        <h3 data-en="Steak & Potatoes" data-es="Bistec y Papas">Steak & Potatoes</h3>
+        <p data-en="Juicy steak paired with seasoned roasted potatoes." data-es="Bistec jugoso acompañado de papas asadas sazonadas.">Juicy steak paired with seasoned roasted potatoes.</p>
       </div>
-
       <div class="menu-item">
-        <img src="pastaprim1.jpg" alt="Pasta Primavera">
-        <h3>Pasta Primavera</h3>
-        <p>Classic Italian pasta tossed with fresh vegetables.</p>
+        <img src="pastaprim1.jpg" alt="Pasta Primavera" loading="lazy">
+        <h3 data-en="Pasta Primavera" data-es="Pasta Primavera">Pasta Primavera</h3>
+        <p data-en="Classic Italian pasta tossed with fresh vegetables." data-es="Pasta italiana clásica con vegetales frescos.">Classic Italian pasta tossed with fresh vegetables.</p>
       </div>
-
       <div class="menu-item">
-        <img src="chocolatecake.jpg" alt="Chocolate Cake">
-        <h3>Chocolate Cake</h3>
-        <p>Decadent triple-layer chocolate cake with rich ganache.</p>
+        <img src="chocolatecake.jpg" alt="Chocolate Cake" loading="lazy">
+        <h3 data-en="Chocolate Cake" data-es="Pastel de Chocolate">Chocolate Cake</h3>
+        <p data-en="Decadent triple-layer chocolate cake with rich ganache." data-es="Pastel de chocolate triple capa con ganache rico.">Decadent triple-layer chocolate cake with rich ganache.</p>
       </div>
-
       <div class="menu-item">
-        <img src="redwine.jpg" alt="Red Wine">
-        <h3>Red Wine</h3>
-        <p>House-selected red wine, perfect with any dish.</p>
+        <img src="redwine.jpg" alt="Red Wine" loading="lazy">
+        <h3 data-en="Red Wine" data-es="Vino Tinto">Red Wine</h3>
+        <p data-en="House-selected red wine, perfect with any dish." data-es="Vino tinto seleccionado, perfecto con cualquier plato.">House-selected red wine, perfect with any dish.</p>
       </div>
-
     </div>
   </section>
+
+  <!-- Reservation Section -->
+  <section id="reservation" class="reservation">
+    <h2 data-en="Reserve Your Table" data-es="Reserva Tu Mesa">Reserve Your Table</h2>
+    <p data-en="Fill out the form below or call us directly!" data-es="Complete el formulario o llámenos directamente!">Fill out the form below or call us directly!</p>
+
+    <form id="reservation-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="date" name="date" required>
+      <input type="time" name="time" required>
+      <select name="guests" required>
+        <option value="" data-en="Number of Guests" data-es="Número de Invitados">Number of Guests</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5+">5+</option>
+      </select>
+      <button type="submit" class="btn" data-en="Reserve Now" data-es="Reservar Ahora">Reserve Now</button>
+    </form>
+  </section>
+
+  <!-- Confirmation Modal -->
+  <div id="confirmation-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-modal">&times;</span>
+      <p id="modal-text" data-en="Thank you! Your reservation request has been sent." data-es="¡Gracias! Su reserva ha sido enviada.">Thank you! Your reservation request has been sent.</p>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
